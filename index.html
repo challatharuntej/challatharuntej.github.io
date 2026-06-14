@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharun Tej Challa | Full-Stack & Systems Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            background-color: #05070f;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #05070f; }
+        ::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.4); }
+
+        /* Hardware-Accelerated High-Vibrancy Glass Layers */
+        .apple-glass {
+            background: rgba(10, 15, 30, 0.55);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .apple-glass:hover {
+            border-color: rgba(6, 182, 212, 0.35);
+            background: rgba(10, 15, 30, 0.65);
+        }
+        .glass-nav {
+            background: rgba(5, 7, 15, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-100 font-sans antialiased relative selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <canvas id="webgl-canvas" class="fixed inset-0 z-0 outline-none"></canvas>
+
+    <div class="fixed top-[-10%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-cyan-500/10 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[15%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="sticky top-0 z-50 glass-nav">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_10px_#06b6d4] animate-pulse"></div>
+                <span class="font-mono text-xs tracking-widest text-cyan-400 font-medium uppercase">THARUN TEJ CHALLA //</span>
+            </div>
+            <div class="space-x-8 font-mono text-[11px] uppercase tracking-widest text-gray-400">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">01. About</a>
+                <a href="#certifications" class="hover:text-cyan-400 transition-colors">02. Ecosystem</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">03. Projects</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">04. Stack</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-6 space-y-36 pb-24">
+
+        <section id="about" class="pt-28 md:pt-40 grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+            <div class="md:col-span-2 space-y-6">
+                <div class="inline-flex items-center space-x-2 font-mono text-xs text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
+                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full inline-block animate-ping"></span>
+                    <span>AVAILABLE FOR OPPORTUNITIES</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white">
+                    Full-Stack & Systems Engineer <br><span class="text-gray-400 text-2xl md:text-3xl font-medium">CSE Honours Graduate</span>
+                </h1>
+                <p class="text-gray-300 text-base md:text-lg max-w-xl leading-relaxed font-light">
+                    I am a Computer Science and Engineering Honours graduate specializing in end-to-end web application development. I combine a strong focus on responsive, user-centric frontends with a deep understanding of core backend infrastructure. My technical projects focus on optimizing server runtimes, designing relational database architectures with strict data integrity, and building automated cloud pipelines.
+                </p>
+                <div class="pt-4 flex items-center space-x-4">
+                    <a href="#projects" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-xs uppercase tracking-widest px-6 py-3.5 hover:from-cyan-400 hover:to-blue-500 transition-all shadow-[0_4px_20px_rgba(6,182,212,0.25)] hover:shadow-[0_4px_25px_rgba(6,182,212,0.45)]">
+                        View Projects
+                    </a>
+                    <button onclick="toggleContactModal(true)" class="apple-glass text-white font-medium text-xs uppercase tracking-widest px-6 py-3.5 transition-all cursor-pointer">
+                        Get In Touch
+                    </button>
+                </div>
+            </div>
+            
+            <div class="apple-glass p-8 flex flex-col justify-between h-72 shadow-2xl transition-all duration-300 border-l-2 border-l-cyan-500/40">
+                <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase">Academic Foundation</span>
+                <div>
+                    <h3 class="text-2xl font-bold tracking-tight text-white">KL University</h3>
+                    <p class="text-gray-400 text-xs font-mono mt-1">B.Tech Computer Science & Engineering (Honours)</p>
+                    <div class="mt-4 flex items-baseline space-x-2">
+                        <span class="text-xs font-mono text-gray-500">CGPA //</span>
+                        <span class="text-2xl font-mono font-bold text-cyan-400 tracking-tight">8.4</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center font-mono text-[10px] text-gray-500 border-t border-gray-800 pt-3">
+                    <span>DURATION: 2021 — 2025</span>
+                    <span class="text-green-400 bg-green-500/10 px-1.5 py-0.5 rounded font-bold">COMPLETED</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-gray-800 pb-4">
+                <h2 class="font-mono text-xs font-bold tracking-widest uppercase text-gray-400">02 // Technical Credentials</h2>
+                <span class="text-xs text-gray-500 font-mono mt-1 md:mt-0">Click cards to verify certifications</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="assets/aws-cert.pdf" target="_blank" class="apple-glass p-6 flex flex-col justify-between min-h-[220px] transition-all duration-300 group text-inherit no-underline">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">AWS Certified Cloud Practitioner</h3>
+                            <span class="font-mono text-[10px] text-gray-600 group-hover:text-cyan-400 transition-colors">[01]</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed font-light">Validation of distributed cloud architectures, deployment models, security access control policies, and scalable AWS configurations.</p>
+                    </div>
+                    <div class="font-mono text-[10px] text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1.5 self-start mt-4 rounded group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all max-w-full truncate">
+                        Verification ID: 500ea8c313eb4f6ba23cd59ed69065fa
+                    </div>
+                </a>
+
+                <a href="assets/wipro-cert.pdf" target="_blank" class="apple-glass p-6 flex flex-col justify-between min-h-[220px] transition-all duration-300 group text-inherit no-underline">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">Java Full Stack Expert</h3>
+                            <span class="font-mono text-[10px] text-gray-600 group-hover:text-cyan-400 transition-colors">[02]</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed font-light">Advanced application development using Object-Oriented design, multithreading patterns, relational data persistence, and server configurations.</p>
+                    </div>
+                    <div class="font-mono text-[11px] text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1.5 self-start mt-4 rounded group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all">
+                        Credential: Wipro TalentNext Certified
+                    </div>
+                </a>
+
+                <a href="assets/salesforce-cert.pdf" target="_blank" class="apple-glass p-6 flex flex-col justify-between min-h-[220px] transition-all duration-300 group text-inherit no-underline">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">Salesforce Certified AI Associate</h3>
+                            <span class="font-mono text-[10px] text-gray-600 group-hover:text-cyan-400 transition-colors">[03]</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed font-light">Competency tracking for AI fundamentals, ethical data management, and integrating predictive modeling patterns.</p>
+                    </div>
+                    <div class="font-mono text-[11px] text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1.5 self-start mt-4 rounded group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all">
+                        Verification: Trailhead Profile
+                    </div>
+                </a>
+
+                <a href="assets/automation-cert.pdf" target="_blank" class="apple-glass p-6 flex flex-col justify-between min-h-[220px] transition-all duration-300 group text-inherit no-underline">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">Automation Anywhere RPA Professional</h3>
+                            <span class="font-mono text-[10px] text-gray-600 group-hover:text-cyan-400 transition-colors">[04]</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed font-light">Automation of critical software processes, background exception handling, and structuring integration logic workflows.</p>
+                    </div>
+                    <div class="font-mono text-[11px] text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 px-3 py-1.5 self-start mt-4 rounded group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all">
+                        Registry Token: AAESS-A360
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="projects" class="space-y-8">
+            <h2 class="font-mono text-xs font-bold tracking-widest uppercase text-gray-400 border-b border-gray-800 pb-4">03 // Featured Projects</h2>
+            
+            <div class="space-y-6">
+                <div class="apple-glass grid grid-cols-1 md:grid-cols-3 gap-8 p-8 shadow-2xl transition-all duration-300">
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[10px] font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded">FULL-STACK APP</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-white mt-3">Distributed E-Visa Architecture</h3>
+                            <p class="font-mono text-[11px] text-gray-500 mt-1">Java Core • Servlets/JSP • MySQL • Session Management</p>
+                        </div>
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center text-xs font-mono font-bold uppercase tracking-widest text-cyan-400 hover:text-cyan-300 group pt-4 md:pt-0">
+                            View Source <span class="ml-2 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+                        </a>
+                    </div>
+                    <div class="md:col-span-2 space-y-4 text-sm text-gray-400 leading-relaxed font-light flex flex-col justify-center border-t md:border-t-0 md:border-l border-gray-800/60 pt-4 md:pt-0 md:pl-8">
+                        <p>Architected a secure full-stack application designed to streamline international credential and visa processing workflows. Implemented structural session state handling via backend controller instances to safeguard data flow against multi-user transactional conflicts.</p>
+                        <p>Designed a normalized relational database schema within MySQL, integrating index tuning strategies to optimize lookups and secure sensitive identity records.</p>
+                    </div>
+                </div>
+
+                <div class="apple-glass grid grid-cols-1 md:grid-cols-3 gap-8 p-8 shadow-2xl transition-all duration-300">
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[10px] font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded">DATA ENGINE</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-white mt-3">Pipeline Flow Analytics Runtime</h3>
+                            <p class="font-mono text-[11px] text-gray-500 mt-1">C Architecture • Data Ingestion • Algorithmic Modeling</p>
+                        </div>
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center text-xs font-mono font-bold uppercase tracking-widest text-cyan-400 hover:text-cyan-300 group pt-4 md:pt-0">
+                            View Source <span class="ml-2 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+                        </a>
+                    </div>
+                    <div class="md:col-span-2 space-y-4 text-sm text-gray-400 leading-relaxed font-light flex flex-col justify-center border-t md:border-t-0 md:border-l border-gray-800/60 pt-4 md:pt-0 md:pl-8">
+                        <p>Collaborated on a high-efficiency data parsing script built to ingest and analyze multi-point fluid variance parameters streamed across hardware layouts.</p>
+                        <p>Authored optimized algorithmic processing modules in native C, validating real-time stream inputs against mathematical thresholds to catch system anomalies and leaks with high precision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="space-y-6">
+            <div class="apple-glass p-8 md:p-12 grid grid-cols-1 md:grid-cols-4 gap-8 rounded-none shadow-2xl">
+                <div class="col-span-1">
+                    <h2 class="font-mono text-xs font-bold tracking-widest uppercase text-cyan-400 border-b border-gray-800 pb-3">Technical Stack</h2>
+                </div>
+                <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                    <div class="space-y-1.5">
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-white">01 / Core Languages & Systems</h4>
+                        <p class="text-gray-400 font-light">Java, C Language, Relational Databases (MySQL Optimization)</p>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-white">02 / Enterprise & Web Development</h4>
+                        <p class="text-gray-400 font-light">Java Servlets, JSP, Spring Boot Framework, Git Version Control</p>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-white">03 / Cloud Infrastructure</h4>
+                        <p class="text-gray-300 font-light">AWS Topology (EC2 Elastic Compute, S3 Bucket Storage), Linux Shell Scripting</p>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-white">04 / Engineering Fundamentals</h4>
+                        <p class="text-gray-300 font-light">Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-mono space-y-4 md:space-y-0 border-t border-gray-900 pt-12">
+            <div class="space-y-1 text-center md:text-left">
+                <div>CONTACT // 2100032582cse@gmail.com</div>
+                <div class="text-gray-600">LOCATION // Tadepalligudem, Andhra Pradesh, India</div>
+            </div>
+            <div class="space-x-6 apple-glass px-5 py-2.5 rounded-full text-gray-400 shadow-xl">
+                <a href="https://github.com" target="_blank" class="hover:text-cyan-400 transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/tharuntej-challa-905850253/" target="_blank" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
+                <a href="https://hackerrank.com/klu_2100032582" target="_blank" class="hover:text-cyan-400 transition-colors">HackerRank</a>
+            </div>
+            <div class="text-gray-600 tracking-wider">
+                © 2026 THARUN TEJ CHALLA
+            </div>
+        </footer>
+
+    </main>
+
+    <div id="contact-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 bg-black/60 backdrop-blur-md px-4">
+        
+        <div class="apple-glass w-full max-w-md p-8 shadow-2xl transform scale-95 transition-transform duration-300 relative border-l-2 border-l-cyan-500/40" id="modal-card">
+            
+            <button onclick="toggleContactModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-white font-mono text-sm uppercase tracking-wider transition-colors cursor-pointer">
+                [ Close ]
+            </button>
+
+            <div class="space-y-6">
+                <div class="space-y-1">
+                    <span class="font-mono text-[10px] text-cyan-400 tracking-widest uppercase">Direct Routing //</span>
+                    <h3 class="text-xl font-bold tracking-tight text-white">Communications Terminal</h3>
+                    <p class="text-gray-400 text-xs font-light">Select a connection matrix gateway to sync with infrastructure records or evaluate assets.</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3 font-mono text-xs uppercase tracking-wider">
+                    
+                    <a href="https://www.linkedin.com/in/tharuntej-challa-905850253/" target="_blank" class="flex justify-between items-center bg-white/5 border border-white/5 hover:border-cyan-500/40 p-4 rounded group transition-all text-gray-300 hover:text-cyan-400">
+                        <span>⚡ LinkedIn Network</span>
+                        <span class="text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors">Connect ↗</span>
+                    </a>
+
+                    <a href="mailto:2100032582cse@gmail.com" class="flex justify-between items-center bg-white/5 border border-white/5 hover:border-cyan-500/40 p-4 rounded group transition-all text-gray-300 hover:text-cyan-400">
+                        <div class="flex flex-col text-left">
+                            <span>✉️ Secure Email</span>
+                            <span class="text-[10px] text-gray-500 tracking-normal mt-0.5 group-hover:text-cyan-400/80 transition-colors font-sans font-normal normal-case">2100032582cse@gmail.com</span>
+                        </div>
+                        <span class="text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors">Compose ↗</span>
+                    </a>
+
+                    <a href="tel:+919347898996" class="flex justify-between items-center bg-white/5 border border-white/5 hover:border-cyan-500/40 p-4 rounded group transition-all text-gray-300 hover:text-cyan-400">
+                        <div class="flex flex-col text-left">
+                            <span>📞 Voice Terminal</span>
+                            <span class="text-[10px] text-gray-500 tracking-normal mt-0.5 group-hover:text-cyan-400/80 transition-colors font-sans font-normal normal-case">+91 9347898996</span>
+                        </div>
+                        <span class="text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors">Call ↗</span>
+                    </a>
+
+                    <a href="https://github.com" target="_blank" class="flex justify-between items-center bg-white/5 border border-white/5 hover:border-cyan-500/40 p-4 rounded group transition-all text-gray-300 hover:text-cyan-400">
+                        <span>💻 Production Code</span>
+                        <span class="text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors">Inspect ↗</span>
+                    </a>
+
+                    <a href="https://hackerrank.com/klu_2100032582" target="_blank" class="flex justify-between items-center bg-white/5 border border-white/5 hover:border-cyan-500/40 p-4 rounded group transition-all text-gray-300 hover:text-cyan-400">
+                        <span>🏆 Problem Solving</span>
+                        <span class="text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors">Evaluate ↗</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('webgl-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const count = 55;
+        const spacing = 1.3;
+        const geometry = new THREE.BufferGeometry();
+        
+        const positions = new Float32Array(count * count * 3);
+        const colors = new Float32Array(count * count * 3);
+
+        const colorCyan = new THREE.Color('#06b6d4');
+        const colorViolet = new THREE.Color('#8b5cf6');
+
+        let index = 0;
+        for (let i = 0; i < count; i++) {
+            for (let j = 0; j < count; j++) {
+                positions[index] = (i - count / 2) * spacing;
+                positions[index + 1] = 0;
+                positions[index + 2] = (j - count / 2) * spacing;
+
+                const mixedColor = colorCyan.clone().lerp(colorViolet, (i / count));
+                colors[index] = mixedColor.r;
+                colors[index + 1] = mixedColor.g;
+                colors[index + 2] = mixedColor.b;
+
+                index += 3;
+            }
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.08,
+            vertexColors: true, 
+            transparent: true,
+            opacity: 0.65,
+            blending: THREE.AdditiveBlending
+        });
+
+        const pointCloud = new THREE.Points(geometry, material);
+        scene.add(pointCloud);
+
+        camera.position.set(0, 14, 24);
+        camera.lookAt(0, -2, 0);
+
+        let mouseX = 0, mouseY = 0;
+        let targetScrollY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) - 0.5;
+            mouseY = (e.clientY / window.innerHeight) - 0.5;
+        });
+
+        window.addEventListener('scroll', () => {
+            targetScrollY = window.scrollY;
+        });
+
+        const clock = new THREE.Clock();
+
+        const animate = () => {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            const currentPositions = pointCloud.geometry.attributes.position.array;
+            let currentIdx = 0;
+
+            for (let i = 0; i < count; i++) {
+                for (let j = 0; j < count; j++) {
+                    const xCoord = currentPositions[currentIdx];
+                    const zCoord = currentPositions[currentIdx + 2];
+
+                    currentPositions[currentIdx + 1] = 
+                        Math.sin(xCoord * 0.22 + elapsedTime * 1.4) * 1.3 + 
+                        Math.cos(zCoord * 0.18 + elapsedTime * 1.1) * 0.9 +
+                        Math.sin((xCoord + zCoord) * 0.12 + elapsedTime) * 0.6;
+
+                    currentIdx += 3;
+                }
+            }
+            pointCloud.geometry.attributes.position.needsUpdate = true;
+
+            camera.position.x += (mouseX * 10 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 4 + 14 - camera.position.y) * 0.05;
+            pointCloud.position.y = -targetScrollY * 0.018;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // MODAL MATRIX CONTROLLER ENGINE (BUG-FIXED PROPAGATION)
+        function toggleContactModal(show) {
+            const modal = document.getElementById('contact-modal');
+            const card = document.getElementById('modal-card');
+            
+            if (show) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                card.classList.remove('scale-100');
+                card.classList.add('scale-95');
+            }
+        }
+
+        // Prevents child interactions inside the card from falsely triggering background close protocols
+        document.getElementById('modal-card').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close overlay cleanly only if user explicitly clicks the empty background backdrop
+        document.getElementById('contact-modal').addEventListener('click', () => {
+            toggleContactModal(false);
+        });
+    </script>
+</body>
+</html>
